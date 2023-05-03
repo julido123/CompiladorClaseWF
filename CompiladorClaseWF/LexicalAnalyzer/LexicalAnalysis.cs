@@ -665,7 +665,6 @@ namespace CompiladorClaseWF.LexicalAnalyzer
                     "No es posible continuar con el proceso de compilacion hasta que el error haya sido " +
                     "solucionado. Por favor verifique la consola de errores para tender mas detalle del " +
                     "problema que se ha presentado...");
-
             }
             else if (ErrorType.CONTROLABLE.Equals(errorType))
             {

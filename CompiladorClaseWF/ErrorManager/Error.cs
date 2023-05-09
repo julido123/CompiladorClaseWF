@@ -55,8 +55,23 @@ namespace CompiladorClaseWF.ErrorManager
             sb.Append("Tipo: ").Append(Type).Append("\n");
             sb.Append("Categoria: ").Append(Category).Append("\n");
             sb.Append("Lexema: ").Append(Lexeme).Append("\n");
-
             return sb.ToString();
+        }
+
+        public List<String> ToTableInfo()
+        {
+            List<String> list = new List<String>();
+            list.Add(LineNumber.ToString());
+            list.Add(InitialPosition.ToString());
+            list.Add(FinalPosition.ToString());
+            list.Add(Fail.ToString());
+            list.Add(Cause.ToString());
+            list.Add(Solution.ToString());
+            list.Add(Level.ToString());
+            list.Add(Type.ToString());
+            list.Add(Category.ToString());
+            list.Add(Lexeme.ToString());
+            return list;
         }
 
     }

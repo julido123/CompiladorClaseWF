@@ -19,11 +19,13 @@ namespace CompiladorClaseWF
             string cadena = "";
             string errores = "";
 
+
             // Precarga de datos
             Cache.AddLine(Line.Create(1, "123 456           678,8"));
             Cache.AddLine(Line.Create(2, "      678  "));
             Cache.AddLine(Line.Create(3, ""));
             Cache.AddLine(Line.Create(4, "4"));
+            //Cache.AddLine(Line.Create(5, "      ??X=¿¿"));
 
             LexicalAnalysis.Initialize();
 
@@ -38,101 +40,124 @@ namespace CompiladorClaseWF
             }
             catch (Exception exception)
             {
-
-                /*Console.WriteLine("¡¡¡¡¡ERROR DE COMPILACION!!!!!");
-                Console.WriteLine(exception.Message);*/
-
-                errores += exception.Message;
+                lblErrorEnCompilacion.Text = "¡¡¡¡¡ERROR DE COMPILACION!!!!! \n";
+                lblException.Text = exception.Message;
+                panel1.Visible = false;
+                panel2.Visible = true;
             }
 
-            Console.WriteLine(TablaSimbolos.GetTablaSimbolos());
             if (TablaMaestra.GetComponetsAsList(ComponentType.LITERAL).Count() > 0)
             {
-                Console.WriteLine("Literales: ");
                 cadena += "Literales: \n";
+
+                DataTable LiteralSimbolos = crearTablaSimbolos();
 
                 foreach (LexicalComponent componentTmp in TablaMaestra.GetComponetsAsList(ComponentType.LITERAL))
                 {
-                    Console.WriteLine("================================");
-                    cadena += "================================ \n";
-                    Console.WriteLine(componentTmp.ToString());
+                    cadena += "============================== \n";
                     cadena += componentTmp.ToString() + "\n";
 
+                    LiteralSimbolos.Rows.Add(componentTmp.ToTableInfo().ToArray());
                 }
+
+                dgvLiteralSimbolos.DataSource = LiteralSimbolos;
             }
 
             if (TablaMaestra.GetComponetsAsList(ComponentType.NORMAL).Count() > 0)
             {
-                Console.WriteLine("Simbolos: ");
                 cadena += "Simbolos: \n";
+
+                DataTable NormalSimbolos = crearTablaSimbolos();
 
                 foreach (LexicalComponent componentTmp in TablaMaestra.GetComponetsAsList(ComponentType.NORMAL))
                 {
-                    Console.WriteLine("================================");
-                    Console.WriteLine(componentTmp.ToString());
+                    cadena += "============================== \n";
                     cadena += componentTmp.ToString() + "\n";
+
+                    NormalSimbolos.Rows.Add(componentTmp.ToTableInfo().ToArray());
                 }
+
+                dgvNormalSimbolos.DataSource = NormalSimbolos;
             }
 
             if (TablaMaestra.GetComponetsAsList(ComponentType.DUMMY).Count() > 0)
             {
-                Console.WriteLine("Dummies: ");
                 cadena += "Dummies: \n";
+                DataTable DummiesSimbolos = crearTablaSimbolos();
+
 
                 foreach (LexicalComponent componentTmp in TablaMaestra.GetComponetsAsList(ComponentType.DUMMY))
                 {
-                    Console.WriteLine("================================");
-                    Console.WriteLine(componentTmp.ToString());
+                    cadena += "============================== \n";
                     cadena += componentTmp.ToString() + "\n";
+                    DummiesSimbolos.Rows.Add(componentTmp.ToTableInfo().ToArray());
                 }
+
+                dgvDummiesSimbolos.DataSource = DummiesSimbolos;
             }
 
             if (TablaMaestra.GetComponetsAsList(ComponentType.PALABRA_RESERVADA).Count() > 0)
             {
-                Console.WriteLine("Palabras reservadas: ");
                 cadena += "Palabras reservadas:  \n";
+                DataTable PalabrasReservadasSimbolos = crearTablaSimbolos();
 
                 foreach (LexicalComponent componentTmp in TablaMaestra.GetComponetsAsList(ComponentType.PALABRA_RESERVADA))
                 {
-                    Console.WriteLine("================================");
-                    Console.WriteLine(componentTmp.ToString());
+                    cadena += "============================== \n";
                     cadena += componentTmp.ToString() + "\n";
+                    PalabrasReservadasSimbolos.Rows.Add(componentTmp.ToTableInfo().ToArray());
                 }
+
+                dgvPalabrasReservadasSimbolos.DataSource = PalabrasReservadasSimbolos;
             }
 
             if (ErrorManagement.HayErrores())
             {
+                cadena += "-------ERRORES-------- \n";
+                DataTable ErroresSimbolos = crearTablaError();
                 foreach (Error error in ErrorManagement.GetErrors(ErrorLevel.LEXICO))
                 {
-                    Console.WriteLine(error.ToString());
-                    Console.WriteLine("___________________________________________________________");
+                    cadena += error.ToString() + "\n";
+                    cadena += "========================= \n";
+                    ErroresSimbolos.Rows.Add(error.ToTableInfo().ToArray());
                 }
+                dgvErrores.DataSource = ErroresSimbolos;
             }
 
-
-
-            label2.Text = errores;
+            //label2.Text = errores;
             richTextBox1.Text = cadena;
 
-
-            DataTable simbolos = new DataTable();
-            simbolos.Columns.Add("Tipo", typeof(ComponentType));
-            simbolos.Columns.Add("Categoria", typeof(string));
-            simbolos.Columns.Add("Lexegema", typeof(string));
-            simbolos.Columns.Add("Linea", typeof(int));
-            simbolos.Columns.Add("Posicion Inicial", typeof(int));
-            simbolos.Columns.Add("Posicion Final", typeof(int));
-
-            LexicalComponent componentt = new LexicalComponent();
-
-            simbolos.Rows.Add(ComponentType.NORMAL, "Entero", "678", 1, 1, 2);
-
-
-            dgv1.DataSource = simbolos;
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public DataTable crearTablaSimbolos()
         {
+            DataTable tablaSimbolos = new DataTable();
+            tablaSimbolos.Columns.Add("Tipo", typeof(string));
+            tablaSimbolos.Columns.Add("Categoria", typeof(string));
+            tablaSimbolos.Columns.Add("Lexema", typeof(string));
+            tablaSimbolos.Columns.Add("Linea", typeof(string));
+            tablaSimbolos.Columns.Add("Posicion Inicial", typeof(string));
+            tablaSimbolos.Columns.Add("Posicion Final", typeof(string));
+
+            return tablaSimbolos;
+
+        }
+
+        public DataTable crearTablaError()
+        {
+            DataTable tablaError = new DataTable();
+            tablaError.Columns.Add("Numero Linea", typeof(string));
+            tablaError.Columns.Add("Posicion inicial", typeof(string));
+            tablaError.Columns.Add("Posicion final", typeof(string));
+            tablaError.Columns.Add("Fallo", typeof(string));
+            tablaError.Columns.Add("Causa", typeof(string));
+            tablaError.Columns.Add("Solucion", typeof(string));
+            tablaError.Columns.Add("Nivel", typeof(string));
+            tablaError.Columns.Add("Tipo", typeof(string));
+            tablaError.Columns.Add("Categoria", typeof(string));
+            tablaError.Columns.Add("Lexema", typeof(string));
+
+            return tablaError;
 
         }
 

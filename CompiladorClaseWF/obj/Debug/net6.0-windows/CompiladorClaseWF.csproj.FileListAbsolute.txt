@@ -15,3 +15,20 @@ C:\Users\jeroe\Desktop\Codigo\Proyectos Universidad\Compiladores\CompiladorClase
 C:\Users\jeroe\Desktop\Codigo\Proyectos Universidad\Compiladores\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.pdb
 C:\Users\jeroe\Desktop\Codigo\Proyectos Universidad\Compiladores\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.genruntimeconfig.cache
 C:\Users\jeroe\Desktop\Codigo\Proyectos Universidad\Compiladores\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\ref\CompiladorClaseWF.dll
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.csproj.AssemblyReference.cache
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.Form1.resources
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.csproj.GenerateResource.cache
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.GeneratedMSBuildEditorConfig.editorconfig
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.AssemblyInfoInputs.cache
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.AssemblyInfo.cs
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.csproj.CoreCompileInputs.cache
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.dll
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\refint\CompiladorClaseWF.dll
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.pdb
+C:\u\CompiladorClaseWF\CompiladorClaseWF\bin\Debug\net6.0-windows\CompiladorClaseWF.exe
+C:\u\CompiladorClaseWF\CompiladorClaseWF\bin\Debug\net6.0-windows\CompiladorClaseWF.deps.json
+C:\u\CompiladorClaseWF\CompiladorClaseWF\bin\Debug\net6.0-windows\CompiladorClaseWF.runtimeconfig.json
+C:\u\CompiladorClaseWF\CompiladorClaseWF\bin\Debug\net6.0-windows\CompiladorClaseWF.dll
+C:\u\CompiladorClaseWF\CompiladorClaseWF\bin\Debug\net6.0-windows\CompiladorClaseWF.pdb
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\CompiladorClaseWF.genruntimeconfig.cache
+C:\u\CompiladorClaseWF\CompiladorClaseWF\obj\Debug\net6.0-windows\ref\CompiladorClaseWF.dll

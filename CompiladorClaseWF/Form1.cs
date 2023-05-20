@@ -25,7 +25,7 @@ namespace CompiladorClaseWF
             Cache.AddLine(Line.Create(2, "      678  "));
             Cache.AddLine(Line.Create(3, ""));
             Cache.AddLine(Line.Create(4, "4"));
-            //Cache.AddLine(Line.Create(5, "      ??X=¿¿"));
+            Cache.AddLine(Line.Create(5, "      ??X=¿¿"));
 
             LexicalAnalysis.Initialize();
 

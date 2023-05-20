@@ -53,10 +53,10 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(36, 24);
-            richTextBox1.Margin = new Padding(2, 1, 2, 1);
+            richTextBox1.Location = new Point(67, 51);
+            richTextBox1.Margin = new Padding(4, 2, 4, 2);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(265, 763);
+            richTextBox1.Size = new Size(489, 1623);
             richTextBox1.TabIndex = 2;
             richTextBox1.Text = "";
             // 
@@ -65,33 +65,33 @@
             lblNormalSimbolos.AutoSize = true;
             lblNormalSimbolos.Enabled = false;
             lblNormalSimbolos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNormalSimbolos.Location = new Point(242, 43);
-            lblNormalSimbolos.Margin = new Padding(2, 0, 2, 0);
+            lblNormalSimbolos.Location = new Point(449, 92);
+            lblNormalSimbolos.Margin = new Padding(4, 0, 4, 0);
             lblNormalSimbolos.Name = "lblNormalSimbolos";
-            lblNormalSimbolos.Size = new Size(184, 25);
+            lblNormalSimbolos.Size = new Size(369, 51);
             lblNormalSimbolos.TabIndex = 7;
             lblNormalSimbolos.Text = "Simbolos Normales";
             // 
             // dgvNormalSimbolos
             // 
             dgvNormalSimbolos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNormalSimbolos.Location = new Point(36, 69);
-            dgvNormalSimbolos.Margin = new Padding(2, 1, 2, 1);
+            dgvNormalSimbolos.Location = new Point(67, 147);
+            dgvNormalSimbolos.Margin = new Padding(4, 2, 4, 2);
             dgvNormalSimbolos.Name = "dgvNormalSimbolos";
             dgvNormalSimbolos.RowHeadersWidth = 82;
             dgvNormalSimbolos.RowTemplate.Height = 41;
-            dgvNormalSimbolos.Size = new Size(684, 254);
+            dgvNormalSimbolos.Size = new Size(1270, 542);
             dgvNormalSimbolos.TabIndex = 11;
             // 
             // dgvLiteralSimbolos
             // 
             dgvLiteralSimbolos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLiteralSimbolos.Location = new Point(838, 69);
-            dgvLiteralSimbolos.Margin = new Padding(2, 1, 2, 1);
+            dgvLiteralSimbolos.Location = new Point(1556, 147);
+            dgvLiteralSimbolos.Margin = new Padding(4, 2, 4, 2);
             dgvLiteralSimbolos.Name = "dgvLiteralSimbolos";
             dgvLiteralSimbolos.RowHeadersWidth = 82;
             dgvLiteralSimbolos.RowTemplate.Height = 41;
-            dgvLiteralSimbolos.Size = new Size(684, 254);
+            dgvLiteralSimbolos.Size = new Size(1270, 542);
             dgvLiteralSimbolos.TabIndex = 12;
             // 
             // lblLiteralSimbols
@@ -99,10 +99,10 @@
             lblLiteralSimbols.AutoSize = true;
             lblLiteralSimbols.Enabled = false;
             lblLiteralSimbols.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLiteralSimbols.Location = new Point(1089, 43);
-            lblLiteralSimbols.Margin = new Padding(2, 0, 2, 0);
+            lblLiteralSimbols.Location = new Point(2022, 92);
+            lblLiteralSimbols.Margin = new Padding(4, 0, 4, 0);
             lblLiteralSimbols.Name = "lblLiteralSimbols";
-            lblLiteralSimbols.Size = new Size(172, 25);
+            lblLiteralSimbols.Size = new Size(347, 51);
             lblLiteralSimbols.TabIndex = 13;
             lblLiteralSimbols.Text = "Simbolos Literales";
             // 
@@ -111,33 +111,33 @@
             label1.AutoSize = true;
             label1.Enabled = false;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(1089, 440);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(2022, 939);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(278, 25);
+            label1.Size = new Size(557, 51);
             label1.TabIndex = 17;
             label1.Text = "Simbolos Palabras Reservadas";
             // 
             // dgvPalabrasReservadasSimbolos
             // 
             dgvPalabrasReservadasSimbolos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPalabrasReservadasSimbolos.Location = new Point(838, 477);
-            dgvPalabrasReservadasSimbolos.Margin = new Padding(2, 1, 2, 1);
+            dgvPalabrasReservadasSimbolos.Location = new Point(1556, 1018);
+            dgvPalabrasReservadasSimbolos.Margin = new Padding(4, 2, 4, 2);
             dgvPalabrasReservadasSimbolos.Name = "dgvPalabrasReservadasSimbolos";
             dgvPalabrasReservadasSimbolos.RowHeadersWidth = 82;
             dgvPalabrasReservadasSimbolos.RowTemplate.Height = 41;
-            dgvPalabrasReservadasSimbolos.Size = new Size(684, 254);
+            dgvPalabrasReservadasSimbolos.Size = new Size(1270, 542);
             dgvPalabrasReservadasSimbolos.TabIndex = 16;
             // 
             // dgvDummiesSimbolos
             // 
             dgvDummiesSimbolos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDummiesSimbolos.Location = new Point(27, 477);
-            dgvDummiesSimbolos.Margin = new Padding(2, 1, 2, 1);
+            dgvDummiesSimbolos.Location = new Point(50, 1018);
+            dgvDummiesSimbolos.Margin = new Padding(4, 2, 4, 2);
             dgvDummiesSimbolos.Name = "dgvDummiesSimbolos";
             dgvDummiesSimbolos.RowHeadersWidth = 82;
             dgvDummiesSimbolos.RowTemplate.Height = 41;
-            dgvDummiesSimbolos.Size = new Size(684, 254);
+            dgvDummiesSimbolos.Size = new Size(1270, 542);
             dgvDummiesSimbolos.TabIndex = 15;
             // 
             // lblDummy
@@ -145,10 +145,10 @@
             lblDummy.AutoSize = true;
             lblDummy.Enabled = false;
             lblDummy.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDummy.Location = new Point(244, 440);
-            lblDummy.Margin = new Padding(2, 0, 2, 0);
+            lblDummy.Location = new Point(453, 939);
+            lblDummy.Margin = new Padding(4, 0, 4, 0);
             lblDummy.Name = "lblDummy";
-            lblDummy.Size = new Size(182, 25);
+            lblDummy.Size = new Size(367, 51);
             lblDummy.TabIndex = 14;
             lblDummy.Text = "Simbolos Dummies";
             // 
@@ -162,9 +162,10 @@
             panel1.Controls.Add(dgvLiteralSimbolos);
             panel1.Controls.Add(lblLiteralSimbols);
             panel1.Controls.Add(lblDummy);
-            panel1.Location = new Point(306, 24);
+            panel1.Location = new Point(568, 51);
+            panel1.Margin = new Padding(6);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1534, 966);
+            panel1.Size = new Size(2849, 2061);
             panel1.TabIndex = 18;
             // 
             // panel2
@@ -172,29 +173,31 @@
             panel2.Controls.Add(dgvErrores);
             panel2.Controls.Add(lblException);
             panel2.Controls.Add(lblErrorEnCompilacion);
-            panel2.Location = new Point(306, 24);
+            panel2.Location = new Point(568, 51);
+            panel2.Margin = new Padding(6);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1534, 966);
+            panel2.Size = new Size(2849, 2061);
             panel2.TabIndex = 19;
             panel2.Visible = false;
             // 
             // dgvErrores
             // 
             dgvErrores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvErrores.Location = new Point(212, 612);
-            dgvErrores.Margin = new Padding(2, 1, 2, 1);
+            dgvErrores.Location = new Point(394, 1306);
+            dgvErrores.Margin = new Padding(4, 2, 4, 2);
             dgvErrores.Name = "dgvErrores";
             dgvErrores.RowHeadersWidth = 82;
             dgvErrores.RowTemplate.Height = 41;
-            dgvErrores.Size = new Size(1097, 167);
+            dgvErrores.Size = new Size(2037, 356);
             dgvErrores.TabIndex = 16;
             // 
             // lblException
             // 
             lblException.Font = new Font("Segoe UI Light", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblException.Location = new Point(75, 302);
+            lblException.Location = new Point(139, 644);
+            lblException.Margin = new Padding(6, 0, 6, 0);
             lblException.Name = "lblException";
-            lblException.Size = new Size(1407, 274);
+            lblException.Size = new Size(2613, 585);
             lblException.TabIndex = 1;
             lblException.Text = "label2";
             // 
@@ -202,21 +205,23 @@
             // 
             lblErrorEnCompilacion.AutoSize = true;
             lblErrorEnCompilacion.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblErrorEnCompilacion.Location = new Point(452, 82);
+            lblErrorEnCompilacion.Location = new Point(839, 175);
+            lblErrorEnCompilacion.Margin = new Padding(6, 0, 6, 0);
             lblErrorEnCompilacion.Name = "lblErrorEnCompilacion";
-            lblErrorEnCompilacion.Size = new Size(128, 50);
+            lblErrorEnCompilacion.Size = new Size(253, 99);
             lblErrorEnCompilacion.TabIndex = 0;
             lblErrorEnCompilacion.Text = "label2";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1861, 1002);
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(2564, 1399);
             Controls.Add(richTextBox1);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Margin = new Padding(2, 1, 2, 1);
+            Margin = new Padding(4, 2, 4, 2);
             Name = "Form1";
             Text = "Form1";
             WindowState = FormWindowState.Maximized;

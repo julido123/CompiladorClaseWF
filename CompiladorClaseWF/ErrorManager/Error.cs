@@ -41,6 +41,14 @@ namespace CompiladorClaseWF.ErrorManager
         {
             return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution, ErrorLevel.LEXICO, ErrorType.CONTROLABLE, category, lexeme);
         }
+        public static Error CreateStopperSintacticError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category category, string lexeme)
+        {
+            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution, ErrorLevel.SINTACTICO, ErrorType.STOPPER, category, lexeme);
+        }
+        public static Error CreateNoStopperSintacticError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category category, string lexeme)
+        {
+            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution, ErrorLevel.SINTACTICO, ErrorType.CONTROLABLE, category, lexeme);
+        }
 
         public string ToString()
         {

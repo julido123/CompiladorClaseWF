@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\u\\CompiladorClaseWF\\CompiladorClaseWF\\CompiladorClaseWF.csproj": {}
+    "C:\\Users\\jeroe\\Desktop\\Codigo\\Proyectos Universidad\\Compiladores\\CompiladorClaseWF\\CompiladorClaseWF\\CompiladorClaseWF.csproj": {}
   },
   "projects": {
-    "C:\\u\\CompiladorClaseWF\\CompiladorClaseWF\\CompiladorClaseWF.csproj": {
+    "C:\\Users\\jeroe\\Desktop\\Codigo\\Proyectos Universidad\\Compiladores\\CompiladorClaseWF\\CompiladorClaseWF\\CompiladorClaseWF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\u\\CompiladorClaseWF\\CompiladorClaseWF\\CompiladorClaseWF.csproj",
+        "projectUniqueName": "C:\\Users\\jeroe\\Desktop\\Codigo\\Proyectos Universidad\\Compiladores\\CompiladorClaseWF\\CompiladorClaseWF\\CompiladorClaseWF.csproj",
         "projectName": "CompiladorClaseWF",
-        "projectPath": "C:\\u\\CompiladorClaseWF\\CompiladorClaseWF\\CompiladorClaseWF.csproj",
-        "packagesPath": "C:\\Users\\Julian\\.nuget\\packages\\",
-        "outputPath": "C:\\u\\CompiladorClaseWF\\CompiladorClaseWF\\obj\\",
+        "projectPath": "C:\\Users\\jeroe\\Desktop\\Codigo\\Proyectos Universidad\\Compiladores\\CompiladorClaseWF\\CompiladorClaseWF\\CompiladorClaseWF.csproj",
+        "packagesPath": "C:\\Users\\jeroe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jeroe\\Desktop\\Codigo\\Proyectos Universidad\\Compiladores\\CompiladorClaseWF\\CompiladorClaseWF\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Julian\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\jeroe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -9,7 +9,6 @@ namespace CompiladorClaseWF.ErrorManager
     public class ErrorManagement
     {
         private static Dictionary<ErrorLevel, List<Error>> ErrorMap = new Dictionary<ErrorLevel, List<Error>>();
-        private static Boolean IsInitialized = false;
 
         static ErrorManagement()
         {
@@ -22,25 +21,24 @@ namespace CompiladorClaseWF.ErrorManager
             ErrorMap.Add(ErrorLevel.LEXICO, new List<Error>());
             ErrorMap.Add(ErrorLevel.SINTACTICO, new List<Error>());
             ErrorMap.Add(ErrorLevel.SEMANTICO, new List<Error>());
-            IsInitialized = true;
         }
 
         public static void Agregar(Error error)
         {
             if (error != null)
             {
-                ErrorMap[error.Level].Add(error);
+                ErrorMap[error.GetLevel()].Add(error);
             }
         }
-        
+
         public static Boolean HayErrores(ErrorLevel errorLevel)
         {
-            return ErrorMap[errorLevel].Count > 0;
+            return ErrorMap[errorLevel].Count() > 0;
         }
 
         public static Boolean HayErroresAnalisis()
         {
-            return HayErrores(ErrorLevel.LEXICO) || HayErrores(ErrorLevel.SEMANTICO) || HayErrores(ErrorLevel.SINTACTICO);
+            return HayErrores(ErrorLevel.LEXICO) || HayErrores(ErrorLevel.SINTACTICO) || HayErrores(ErrorLevel.SEMANTICO);
         }
 
         public static Boolean HayErroresSintesis()
@@ -57,7 +55,6 @@ namespace CompiladorClaseWF.ErrorManager
         {
             return ErrorMap[errorLevel];
         }
-
 
     }
 }

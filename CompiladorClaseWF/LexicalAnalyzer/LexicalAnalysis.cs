@@ -17,6 +17,8 @@ namespace CompiladorClaseWF.LexicalAnalyzer
         private bool Continue;
         private LexicalComponent Component;
 
+
+        public static LexicalAnalysis GetInstance() { return INSTANCE; }
         public static void Initialize()
         {
             Scanner.Initialize();
@@ -233,62 +235,46 @@ namespace CompiladorClaseWF.LexicalAnalyzer
                 Concanate();
                 INSTANCE.CurrentState = 5;
             }
-            else if (IsEndOfLine())
+            else if (IsMinus())
             {
-                INSTANCE.CurrentState = 13;
+                Concanate();
+                INSTANCE.CurrentState = 6;
+            }
+            else if (IsMultiplication())
+            {
+                Concanate();
+                INSTANCE.CurrentState = 7;
+            }
+            else if (IsLeftParenthesis())
+            {
+                Concanate();
+                INSTANCE.CurrentState = 10;
+            }
+            else if (IsRightParenthesis())
+            {
+                Concanate();
+                INSTANCE.CurrentState = 11;
+            }
+            else if (IsSlash())
+            {
+                Concanate();
+                INSTANCE.CurrentState = 33;
             }
             else if (IsEndOfFile())
             {
                 INSTANCE.CurrentState = 12;
             }
-            else if (IsMinus())
+            else if (IsEndOfLine())
             {
-                INSTANCE.CurrentState = 6;
+                INSTANCE.CurrentState = 13;
             }
-            else if (IsMultiplication())
+            else
             {
-                INSTANCE.CurrentState = 7;
+                INSTANCE.CurrentState = 18;
             }
-            else if (IsSlash())
-            {
-                INSTANCE.CurrentState = 8;
-            }
-            else if (IsModule())
-            {
-                INSTANCE.CurrentState = 9;
-            }
-            else if (IsLeftParenthesis())
-            {
-                INSTANCE.CurrentState = 10;
-            }
-            else if (IsRightParenthesis())
-            {
-                INSTANCE.CurrentState = 11;
-            }
-            else if (IsEqual())
-            {
-                INSTANCE.CurrentState = 19;
-            }
-            else if (IsColon())
-            {
-                INSTANCE.CurrentState = 22;
-            }
-            else if (IsLessThan())
-            {
-                INSTANCE.CurrentState = 20;
-            }
-            else if (IsGreaterThan())
-            {
-                INSTANCE.CurrentState = 21;
-            }
-            else if (IsExclamationMark())
-            {
-                INSTANCE.CurrentState = 30;
-            }
-            else { INSTANCE.CurrentState = 18; }
         }
 
-        private static void ProcessState1()
+       private static void ProcessState1()
         {
             Scanner.ReadNextCharacter();
 
@@ -338,6 +324,7 @@ namespace CompiladorClaseWF.LexicalAnalyzer
             }
         }
 
+
         private static void ProcessState4()
         {
             Scanner.ReadNextCharacter();
@@ -355,16 +342,17 @@ namespace CompiladorClaseWF.LexicalAnalyzer
 
         private static void ProcessState5()
         {
-            CreateComponentReturningIndex(Category.SUMA, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.SUMA, ComponentType.NORMAL);
         }
 
         private static void ProcessState6()
         {
-            CreateComponentReturningIndex(Category.RESTA, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.RESTA, ComponentType.NORMAL);
         }
+
         private static void ProcessState7()
         {
-            CreateComponentReturningIndex(Category.MULTIPLICACION, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.MULTIPLICACION, ComponentType.NORMAL);
         }
         private static void ProcessState8()
         {
@@ -400,7 +388,7 @@ namespace CompiladorClaseWF.LexicalAnalyzer
         }
         private static void ProcessState12()
         {
-            CreateComponentWithouReturnIndex(Category.EOF, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.EOF, ComponentType.NORMAL);
         }
         private static void ProcessState13()
         {
@@ -423,27 +411,29 @@ namespace CompiladorClaseWF.LexicalAnalyzer
         }
         private static void ProcessState17()
         {
-            string fail = "Numero decimal no valido...";
-            string cause = "Se ha recibido un caracter que no corresponde a un digito...";
-            string solution = "Asegurese de que despues del separador decimal, continue un digito...";
-            CreateLexicalEror(ErrorType.CONTROLABLE, fail, cause, solution, Category.DECIMAL, INSTANCE.Lexeme + Scanner.GetCurrentCharacter());
+            string fail = "Número decimal no válido...";
+            string cause = "Se ha recibido un caracter que no corresponde a un dígito...";
+            string solution = "Asegúrese de que luego del separador decimal, continue un dígito...";
+            CreateLexicalError(ErrorType.CONTROLABLE, fail, cause, solution, Category.DECIMAL,
+                INSTANCE.Lexeme + Scanner.GetCurrentCharacter());
+
             Concanate("0");
-
             CreateComponentReturningIndex(Category.DECIMAL, ComponentType.DUMMY);
-
         }
 
         private static void ProcessState18()
         {
-            string fail = "Componente lexico no valido...";
-            string cause = "Se ha recibido un simbolo desconocido por el lenguaje...";
-            string solution = "Asegurese de que solo existan simbolos aceptados por el lenguaje...";
-            CreateLexicalEror(ErrorType.STOPPER, fail, cause, solution, Category.GENERAL, INSTANCE.Lexeme + Scanner.GetCurrentCharacter());
+            string fail = "Componente léxico no válido...";
+            string cause = "Se ha recibo un símbolo desconocido por el lenguaje...";
+            string solution = "Asegúrese de que sólo existan símbolos aceptados por el lenguaje...";
+            CreateLexicalError(ErrorType.STOPPER, fail, cause, solution, Category.GENERAL,
+                Scanner.GetCurrentCharacter());
         }
+
 
         private static void ProcessState19()
         {
-            CreateComponentWithouReturnIndex(Category.IGUAL_QUE, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.IGUAL_QUE, ComponentType.NORMAL);
         }
 
         private static void ProcessState20()
@@ -494,12 +484,12 @@ namespace CompiladorClaseWF.LexicalAnalyzer
 
         private static void ProcessState23()
         {
-            CreateComponentWithouReturnIndex(Category.DIFERENTE_QUE, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.DIFERENTE_QUE, ComponentType.NORMAL);
         }
 
         private static void ProcessState24()
         {
-            CreateComponentWithouReturnIndex(Category.MENOR_IGUAL_QUE, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.MENOR_IGUAL_QUE, ComponentType.NORMAL);
         }
 
         private static void ProcessState25()
@@ -509,8 +499,10 @@ namespace CompiladorClaseWF.LexicalAnalyzer
 
         private static void ProcessState26()
         {
-            CreateComponentWithouReturnIndex(Category.MAYOR_IGUAL_QUE, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.MAYOR_IGUAL_QUE, ComponentType.NORMAL);
         }
+
+
         private static void CreateComponent(Category category, ComponentType type)
         {
             int lineNumber = Scanner.GetCurrentNumberLine();
@@ -525,36 +517,44 @@ namespace CompiladorClaseWF.LexicalAnalyzer
             {
                 INSTANCE.Component = LexicalComponent.CreateDummyComponent(lineNumber, initialPosition, finalPosition, category, INSTANCE.Lexeme);
             }
+
+
         }
 
-        private static void CreateLexicalError(ErrorType errorType, string fail, string cause, string solution, Category expecteCategory, string lexeme)
+        private static void CreateLexicalError(ErrorType errorType, string fail, string cause, string solution, Category expectedCategory, string lexeme)
         {
             int lineNumber = Scanner.GetCurrentNumberLine();
-
             Error error;
 
             if (ErrorType.STOPPER.Equals(errorType))
             {
                 int initialPosition = Scanner.GetCurrentIndex() - 1;
                 int finalPosition = Scanner.GetCurrentIndex() - 1;
-                error = Error.CreateStopperLexicalError(lineNumber, initialPosition, finalPosition, fail, cause, solution, expecteCategory, lexeme);
+
+                error = Error.CreateStopperLexicalError(lineNumber, initialPosition,
+                    finalPosition, fail, cause, solution, expectedCategory, lexeme);
 
                 ErrorManagement.Agregar(error);
-                throw new Exception("Se ha presentado un error tipo STOPPER durante el análisis lexico. No es posible continuar con el proceso de compílación gasta que el error haya solucionado. Por favor verifique la consola de errores para tener más detalles del problema que se ha presentado....");
+
+                throw new Exception("Se ha presentado un error tipo STOPPER durante el anàlisis lèxico." +
+                    " No es posible continuar con el proceso de compilaciòn hasta que el error haya sido " +
+                    "solucionado. Por favor verifique la consola de errores para tener màs detalle del " +
+                    "problema que se ha presentado...");
             }
             else if (ErrorType.CONTROLABLE.Equals(errorType))
             {
                 int initialPosition = Scanner.GetCurrentIndex() - INSTANCE.Lexeme.Length;
                 int finalPosition = Scanner.GetCurrentIndex() - 1;
 
-                error = Error.CreateStopperLexicalError(lineNumber, initialPosition, finalPosition, fail, cause, solution, expecteCategory, lexeme);
+
+                error = Error.CreateNoStopperLexicalError(lineNumber, initialPosition,
+                    finalPosition, fail, cause, solution, expectedCategory, lexeme);
+
                 ErrorManagement.Agregar(error);
             }
-
-
         }
 
-        private static void CreateComponentWithouReturnIndex(Category category, ComponentType type)
+        private static void CreateComponentWithoutReturnIndex(Category category, ComponentType type)
         {
             INSTANCE.Continue = false;
 
@@ -574,7 +574,7 @@ namespace CompiladorClaseWF.LexicalAnalyzer
         }
         private static void ProcessState28()
         {
-            CreateComponentWithouReturnIndex(Category.ASIGNACION, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.ASIGNACION, ComponentType.NORMAL);
         }
         private static void ProcessState29()
         {
@@ -596,7 +596,7 @@ namespace CompiladorClaseWF.LexicalAnalyzer
         }
         private static void ProcessState31()
         {
-            CreateComponentWithouReturnIndex(Category.DIFERENTE_QUE, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.DIFERENTE_QUE, ComponentType.NORMAL);
         }
         private static void ProcessState32()
         {
@@ -605,8 +605,9 @@ namespace CompiladorClaseWF.LexicalAnalyzer
         }
         private static void ProcessState33()
         {
-            CreateComponentReturningIndex(Category.DIVISION, ComponentType.NORMAL);
+            CreateComponentWithoutReturnIndex(Category.DIVISION, ComponentType.NORMAL);
         }
+
         private static void ProcessState34()
         {
             Scanner.ReadNextCharacter();
@@ -647,34 +648,7 @@ namespace CompiladorClaseWF.LexicalAnalyzer
                 INSTANCE.CurrentState = 36;
             }
         }
-
-
-
-
-        private static void CreateLexicalEror(ErrorType errorType, string fail, string cause, string solution, Category expectedCategory, string lexeme)
-        {
-            int lineNumber = Scanner.GetCurrentNumberLine();
-
-            if (ErrorType.STOPPER.Equals(errorType))
-            {
-                int initialPosition = Scanner.GetCurrentIndex() - 1;
-                int finalPosition = Scanner.GetCurrentIndex() - 1;
-                Error error = Error.CreateStopperLexicalError(lineNumber, initialPosition, finalPosition, fail, cause, solution, expectedCategory, lexeme);
-                ErrorManagement.Agregar(error);
-                throw new Exception("Se ha presentado un error de tipo STOPPER durante el analisis lexico" +
-                    "No es posible continuar con el proceso de compilacion hasta que el error haya sido " +
-                    "solucionado. Por favor verifique la consola de errores para tender mas detalle del " +
-                    "problema que se ha presentado...");
-
-            }
-            else if (ErrorType.CONTROLABLE.Equals(errorType))
-            {
-                int initialPosition = Scanner.GetCurrentIndex() - INSTANCE.Lexeme.Length;
-                int finalPosition = Scanner.GetCurrentIndex() - 1;
-                Error error = Error.CreateNotStopperLexicalError(lineNumber, initialPosition, finalPosition, fail, cause, solution, expectedCategory, lexeme);
-                ErrorManagement.Agregar(error);
-            }
-        }
+        
         private static bool IsLetter()
         {
             return Char.IsLetter(Scanner.GetCurrentCharacter().ToCharArray()[0]);

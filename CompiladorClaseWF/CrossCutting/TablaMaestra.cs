@@ -11,19 +11,19 @@ namespace CompiladorClaseWF.CrossCutting
     {
         private static Dictionary<ComponentType, TablaComponentes> TABLAS = new Dictionary<ComponentType, TablaComponentes>();
 
-        private TablaMaestra()
+        static TablaMaestra()
         {
             TABLAS.Add(ComponentType.NORMAL, TablaSimbolos.GetTablaSimbolos());
-            TABLAS.Add(ComponentType.DUMMY, TablaDeDummies.GetTablaDummies());
-            TABLAS.Add(ComponentType.LITERAL, TablaDeLiterales.GetTablaLiterales());
+            TABLAS.Add(ComponentType.DUMMY, TablaDummies.GetTablaDummies());
+            TABLAS.Add(ComponentType.LITERAL, TablaLiterales.GetTablaLiterales());
             TABLAS.Add(ComponentType.PALABRA_RESERVADA, TablaPalabrasReservadas.GetTablaPalabrasReservadas());
         }
         public static void Inicializar()
         {
             TablaSimbolos.GetTablaSimbolos().Initialize();
             TablaPalabrasReservadas.GetTablaPalabrasReservadas().Initialize();
-            TablaDeLiterales.GetTablaLiterales().Initialize();
-            TablaDeDummies.GetTablaDummies().Initialize();
+            TablaLiterales.GetTablaLiterales().Initialize();
+            TablaDummies.GetTablaDummies().Initialize();
         }
 
         public static void Add(LexicalComponent component)

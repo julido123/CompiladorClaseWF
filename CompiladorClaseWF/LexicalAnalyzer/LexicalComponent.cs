@@ -15,7 +15,8 @@ namespace CompiladorClaseWF.LexicalAnalyzer
         private string Lexeme;
         public ComponentType Type { get; set; }
 
-        public LexicalComponent(int lineNumber, int initialPosition, int finalPosition, Category category, string lexeme, ComponentType type)
+        public LexicalComponent(int lineNumber, int initialPosition,
+            int finalPosition, Category category, string lexeme, ComponentType type)
         {
             LineNumber = lineNumber;
             InitialPosition = initialPosition;
@@ -34,15 +35,16 @@ namespace CompiladorClaseWF.LexicalAnalyzer
         {
             return new LexicalComponent(lineNumber, initialPosition, finalPosition, category, lexeme, ComponentType.DUMMY);
         }
-        public static LexicalComponent CreateLiteralComponent(int lineNumber, int initialPosition, int finalPosition, Category category, string lexeme)
-        {
-            return new LexicalComponent(lineNumber, initialPosition, finalPosition, category, lexeme, ComponentType.LITERAL);
-        }
+
         public static LexicalComponent CreatePalabraReservadaComponent(int lineNumber, int initialPosition, int finalPosition, Category category, string lexeme)
         {
             return new LexicalComponent(lineNumber, initialPosition, finalPosition, category, lexeme, ComponentType.PALABRA_RESERVADA);
         }
 
+        public static LexicalComponent CreateLiteralComponent(int lineNumber, int initialPosition, int finalPosition, Category category, string lexeme)
+        {
+            return new LexicalComponent(lineNumber, initialPosition, finalPosition, category, lexeme, ComponentType.LITERAL);
+        }
 
 
         public void SetLineNumber(int lineNumber)
@@ -70,11 +72,6 @@ namespace CompiladorClaseWF.LexicalAnalyzer
             Lexeme = lexeme;
         }
 
-        public ComponentType GetType()
-        {
-            return Type;
-        }
-
         public int GetLineNumber()
         {
             return LineNumber;
@@ -100,6 +97,7 @@ namespace CompiladorClaseWF.LexicalAnalyzer
             return Lexeme;
         }
 
+
         public string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -107,10 +105,21 @@ namespace CompiladorClaseWF.LexicalAnalyzer
             sb.Append("Categoría: ").Append(GetCategory()).Append("\n");
             sb.Append("Lexema: ").Append(GetLexeme()).Append("\n");
             sb.Append("Número de línea: ").Append(GetLineNumber()).Append("\n");
-            sb.Append("Posición inicial de la línea: ").Append(GetInitialPosition()).Append("\n");
-            sb.Append("Posición final de la línea: ").Append(GetFinalPosition()).Append("\n");
+            sb.Append("Posición inicial en la línea: ").Append(GetInitialPosition()).Append("\n");
+            sb.Append("Posición final en la línea: ").Append(GetFinalPosition()).Append("\n");
 
             return sb.ToString();
+        }
+
+        public List<String> ToTableInfo() { 
+            List<String> list = new List<String>();
+            list.Add(Type.ToString());
+            list.Add(GetCategory().ToString());
+            list.Add(GetLexeme());
+            list.Add(GetLineNumber().ToString());
+            list.Add(GetInitialPosition().ToString());
+            list.Add(GetFinalPosition().ToString());
+            return list;
         }
     }
 }

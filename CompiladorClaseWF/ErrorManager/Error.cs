@@ -9,18 +9,18 @@ namespace CompiladorClaseWF.ErrorManager
 {
     public class Error
     {
-        public int LineNumber { get; set; }
-        public int InitialPosition { get; set; }
-        public int FinalPosition { get; set; }
-        public string Fail { get; set; }
-        public string Cause { get; set; }
-        public string Solution { get; set; }
-        public ErrorLevel Level { get; set; }
-        public ErrorType Type { get; set; }
-        public Category Category { get; set; }
-        public string Lexeme { get; set; }
+        private int LineNumber;
+        private int InitialPosition;
+        private int FinalPosition;
+        private string Fail;
+        private string Cause;
+        private string Solution;
+        private ErrorLevel Level;
+        private ErrorType Type;
+        private Category ExpectedCategory;
+        private string Lexeme;
 
-        public Error(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, ErrorLevel level, ErrorType type, Category category, string lexeme)
+        public Error(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, ErrorLevel level, ErrorType type, Category expectedCategory, string lexeme)
         {
             LineNumber = lineNumber;
             InitialPosition = initialPosition;
@@ -30,33 +30,179 @@ namespace CompiladorClaseWF.ErrorManager
             Solution = solution;
             Level = level;
             Type = type;
-            Category = category;
+            ExpectedCategory = expectedCategory;
             Lexeme = lexeme;
         }
-        public static Error CreateStopperLexicalError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category category, string lexeme)
+
+        public static Error CreateStopperLexicalError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category expectedCategory, string lexeme)
         {
-            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution, ErrorLevel.LEXICO, ErrorType.STOPPER, category, lexeme);
+            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution,
+                ErrorLevel.LEXICO, ErrorType.STOPPER, expectedCategory, lexeme);
         }
-        public static Error CreateNotStopperLexicalError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category category, string lexeme)
+
+        public static Error CreateStopperSintacticError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category expectedCategory, string lexeme)
         {
-            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution, ErrorLevel.LEXICO, ErrorType.CONTROLABLE, category, lexeme);
+            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution,
+                ErrorLevel.SINTACTICO, ErrorType.STOPPER, expectedCategory, lexeme);
         }
+
+        public static Error CreateStopperSemanticError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category expectedCategory, string lexeme)
+        {
+            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution,
+                ErrorLevel.SEMANTICO, ErrorType.STOPPER, expectedCategory, lexeme);
+        }
+
+        public static Error CreateNoStopperLexicalError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category expectedCategory, string lexeme)
+        {
+            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution,
+                ErrorLevel.LEXICO, ErrorType.CONTROLABLE, expectedCategory, lexeme);
+        }
+
+        public static Error CreateNoStopperSintacticError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category expectedCategory, string lexeme)
+        {
+            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution,
+                ErrorLevel.SINTACTICO, ErrorType.CONTROLABLE, expectedCategory, lexeme);
+        }
+
+        public static Error CreateNoStopperSemanticError(int lineNumber, int initialPosition, int finalPosition, string fail, string cause, string solution, Category expectedCategory, string lexeme)
+        {
+            return new Error(lineNumber, initialPosition, finalPosition, fail, cause, solution,
+                ErrorLevel.SEMANTICO, ErrorType.CONTROLABLE, expectedCategory, lexeme);
+        }
+
+        public void SetLineNumber(int lineNumber)
+        {
+            LineNumber = lineNumber;
+        }
+
+        public void SetInitialPosition(int initialPosition)
+        {
+            InitialPosition = initialPosition;
+        }
+
+        public void SetFinalPosition(int finalPosition)
+        {
+            FinalPosition = finalPosition;
+        }
+
+        public void SetFail(string fail)
+        {
+            Fail = fail;
+        }
+
+        public void SetCause(string cause)
+        {
+            Cause = cause;
+        }
+
+        public void SetSolution(string solution)
+        {
+            Solution = solution;
+        }
+
+        public void SetExpectedCategory(Category expectedCategory)
+        {
+            ExpectedCategory = expectedCategory;
+        }
+
+        public void SetLexeme(string lexeme)
+        {
+            Lexeme = lexeme;
+        }
+
+        public void SetLevel(ErrorLevel level)
+        {
+            Level = level;
+        }
+
+        public void SetType(ErrorType type)
+        {
+            Type = type;
+        }
+
+        public int GetLineNumber()
+        {
+            return LineNumber;
+        }
+
+        public int GetInitialPosition()
+        {
+            return InitialPosition;
+        }
+
+        public int GetFinalPosition()
+        {
+            return FinalPosition;
+        }
+
+        public string GetFail()
+        {
+            return Fail;
+        }
+
+        public string GetCause()
+        {
+            return Cause;
+        }
+
+        public string GetSolution()
+        {
+            return Solution;
+        }
+
+        public ErrorLevel GetLevel()
+        {
+            return Level;
+        }
+
+        public ErrorType GetType()
+        {
+            return Type;
+        }
+
+        public Category GetExpectedCategory()
+        {
+            return ExpectedCategory;
+        }
+
+        public string GetLexeme()
+        {
+            return Lexeme;
+        }
+
 
         public string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Numero de linea: ").Append(LineNumber).Append("\n");
-            sb.Append("Posicion inicial: ").Append(InitialPosition).Append("\n");
-            sb.Append("Posicion final: ").Append(FinalPosition).Append("\n");
-            sb.Append("Fallo: ").Append(Fail).Append("\n");
-            sb.Append("Causa: ").Append(Cause).Append("\n");
-            sb.Append("Solucion: ").Append(Solution).Append("\n");
-            sb.Append("Nivel: ").Append(Level).Append("\n");
-            sb.Append("Tipo: ").Append(Type).Append("\n");
-            sb.Append("Categoria: ").Append(Category).Append("\n");
-            sb.Append("Lexema: ").Append(Lexeme).Append("\n");
+            sb.Append("Nivel: ").Append(GetLevel()).Append("\n");
+            sb.Append("Tipo: ").Append(GetType()).Append("\n");
+            sb.Append("Falla: ").Append(GetFail()).Append("\n");
+            sb.Append("Causa: ").Append(GetCause()).Append("\n");
+            sb.Append("Solución: ").Append(GetSolution()).Append("\n");
+            sb.Append("Categoría Esperada: ").Append(GetExpectedCategory()).Append("\n");
+            sb.Append("Lexema: ").Append(GetLexeme()).Append("\n");
+            sb.Append("Número de línea: ").Append(GetLineNumber()).Append("\n");
+            sb.Append("Posición inicial en la línea: ").Append(GetInitialPosition()).Append("\n");
+            sb.Append("Posición final en la línea: ").Append(GetFinalPosition()).Append("\n");
 
             return sb.ToString();
+        }
+
+        public List<String> ToTableInfo()
+        {
+            List<String> list = new List<String>
+            {
+                LineNumber.ToString(),
+                InitialPosition.ToString(),
+                FinalPosition.ToString(),
+                Fail.ToString(),
+                Cause.ToString(),
+                Solution.ToString(),
+                Level.ToString(),
+                Type.ToString(),
+                Lexeme.ToString()
+            };
+            return list;
         }
 
     }

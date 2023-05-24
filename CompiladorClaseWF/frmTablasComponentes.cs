@@ -28,8 +28,6 @@ namespace CompiladorClaseWF
             }
 
             LexicalAnalysis.Initialize();
-            
-
 
             try
             {
@@ -37,13 +35,6 @@ namespace CompiladorClaseWF
                 string response = SinAna.Analyze();
 
                 cadena += response + "\n";
-
-                /*while (!Category.EOF.Equals(component.GetCategory()))
-                {
-                    component = LexicalAnalysis.Analyze();
-                    response = SinAna.Analyze();
-                    cadena += response;
-                } */
 
             }
             catch (Exception exception)
@@ -139,6 +130,15 @@ namespace CompiladorClaseWF
                     ErroresSimbolosSintacticos.Rows.Add(error.ToTableInfo().ToArray());
                 }
 
+                cadena += "-------ERRORES SEMANTICOS---- \n";
+                //DataTable ErroresSimbolosSintacticos = crearTablaErrorLexico();
+                foreach (Error error in ErrorManagement.GetErrors(ErrorLevel.SEMANTICO))
+                {
+                    cadena += error.ToString() + "\n";
+                    cadena += "========================= \n";
+                    //ErroresSimbolosSintacticos.Rows.Add(error.ToTableInfo().ToArray());
+                }
+
 
                 dgvErrores.DataSource = ErroresSimboloslexicos;
                 dgvErroresSintacticos.DataSource = ErroresSimbolosSintacticos;
@@ -146,8 +146,6 @@ namespace CompiladorClaseWF
             Cache.Clear();
             richTextBox1.Text = cadena;
         }
-
-
 
 
         public DataTable crearTablaSimbolos()

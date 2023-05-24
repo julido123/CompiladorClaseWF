@@ -52,7 +52,7 @@ namespace CompiladorClaseWF.SintacticAnalyzer
             if (EsCategoriaEsperada(Category.SUMA))
             {
                 LeerSiguienteComponente();
-                Expresion();
+                TerminoPrima(); // Realizar la operación antes de analizar la siguiente expresión
 
                 if (!ErrorManagement.HayErrores())
                 {
@@ -60,11 +60,13 @@ namespace CompiladorClaseWF.SintacticAnalyzer
                     double izquierdo = StackData.Pop();
                     StackData.Push(izquierdo + derecho);
                 }
+
+                ExpresionPrima(); // Llamar recursivamente después de realizar la operación
             }
             else if (EsCategoriaEsperada(Category.RESTA))
             {
                 LeerSiguienteComponente();
-                Expresion();
+                TerminoPrima(); // Realizar la operación antes de analizar la siguiente expresión
 
                 if (!ErrorManagement.HayErrores())
                 {
@@ -72,6 +74,8 @@ namespace CompiladorClaseWF.SintacticAnalyzer
                     double izquierdo = StackData.Pop();
                     StackData.Push(izquierdo - derecho);
                 }
+
+                ExpresionPrima(); // Llamar recursivamente después de realizar la operación
             }
         }
 
@@ -86,7 +90,7 @@ namespace CompiladorClaseWF.SintacticAnalyzer
             if (EsCategoriaEsperada(Category.MULTIPLICACION))
             {
                 LeerSiguienteComponente();
-                Termino();
+                Factor(); // Realizar la operación antes de analizar el siguiente término
 
                 if (!ErrorManagement.HayErrores())
                 {
@@ -94,11 +98,13 @@ namespace CompiladorClaseWF.SintacticAnalyzer
                     double izquierdo = StackData.Pop();
                     StackData.Push(izquierdo * derecho);
                 }
+
+                TerminoPrima(); // Llamar recursivamente después de realizar la operación
             }
             else if (EsCategoriaEsperada(Category.DIVISION))
             {
                 LeerSiguienteComponente();
-                Termino();
+                Factor(); // Realizar la operación antes de analizar el siguiente término
 
                 if (!ErrorManagement.HayErrores())
                 {
@@ -110,14 +116,15 @@ namespace CompiladorClaseWF.SintacticAnalyzer
                         string fail = "División por cero...";
                         string cause = "Componente léxico igual a cero...";
                         string solution = "Asegúrese de que en este lugar esté ubicado un número diferente de cero...";
-                        CreateSintacticError(ErrorType.CONTROLABLE, fail, cause, solution, Category.DECIMAL,
+                        CreateSemanticError(ErrorType.CONTROLABLE, fail, cause, solution, Category.DECIMAL,
                             "Cero (0)");
-
                         derecho = 1;
                     }
 
                     StackData.Push(izquierdo / derecho);
                 }
+
+                TerminoPrima(); // Llamar recursivamente después de realizar la operación
             }
         }
 

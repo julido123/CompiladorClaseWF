@@ -9,8 +9,8 @@ namespace CompiladorClaseWF.CrossCutting
 {
     public class TablaComponentes
     {
-
         protected Dictionary<string, List<LexicalComponent>> Components = new Dictionary<string, List<LexicalComponent>>();
+
         public void Initialize()
         {
             Components.Clear();
@@ -27,6 +27,7 @@ namespace CompiladorClaseWF.CrossCutting
             {
                 Components.Add(lexeme, new List<LexicalComponent>());
             }
+
             return Components[lexeme];
         }
 
@@ -40,13 +41,13 @@ namespace CompiladorClaseWF.CrossCutting
 
         public List<LexicalComponent> GetComponentsAsList()
         {
-
             List<LexicalComponent> returnList = new List<LexicalComponent>();
 
             foreach (List<LexicalComponent> list in Components.Values)
             {
                 returnList.AddRange(list);
             }
+
             return returnList;
         }
     }

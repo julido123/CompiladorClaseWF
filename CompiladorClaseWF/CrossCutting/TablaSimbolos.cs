@@ -20,25 +20,5 @@ namespace CompiladorClaseWF.CrossCutting
         {
             return INSTANCE;
         }
-
-        public static void Inicializar()
-        {
-            INSTANCE.Initialize();
-        }
-
-        public static void Add(LexicalComponent component)
-        {
-            INSTANCE.Add(component);
-        }
-
-        public static Dictionary<string, List<LexicalComponent>> GetComponents()
-        {
-            return INSTANCE.GetComponents();
-        }
-
-        public static List<LexicalComponent> GetComponentsAsList()
-        {
-            return INSTANCE.GetComponentsAsList();
-        }
     }
 }

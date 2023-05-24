@@ -53,13 +53,13 @@ namespace CompiladorClaseWF
             }
 
             //Pintar resultados
-            if (TablaMaestra.GetComponetsAsList(ComponentType.LITERAL).Count() > 0)
+            if (TablaMaestra.GetComponentsAsList(ComponentType.LITERAL).Count() > 0)
             {
                 cadena += "Literales: \n";
 
                 DataTable LiteralSimbolos = crearTablaSimbolos();
 
-                foreach (LexicalComponent componentTmp in TablaMaestra.GetComponetsAsList(ComponentType.LITERAL))
+                foreach (LexicalComponent componentTmp in TablaMaestra.GetComponentsAsList(ComponentType.LITERAL))
                 {
                     cadena += "============================== \n";
                     cadena += componentTmp.ToString() + "\n";
@@ -70,13 +70,13 @@ namespace CompiladorClaseWF
                 dgvLiteralSimbolos.DataSource = LiteralSimbolos;
             }
 
-            if (TablaMaestra.GetComponetsAsList(ComponentType.NORMAL).Count() > 0)
+            if (TablaMaestra.GetComponentsAsList(ComponentType.NORMAL).Count() > 0)
             {
                 cadena += "Simbolos: \n";
 
                 DataTable NormalSimbolos = crearTablaSimbolos();
 
-                foreach (LexicalComponent componentTmp in TablaMaestra.GetComponetsAsList(ComponentType.NORMAL))
+                foreach (LexicalComponent componentTmp in TablaMaestra.GetComponentsAsList(ComponentType.NORMAL))
                 {
                     cadena += "============================== \n";
                     cadena += componentTmp.ToString() + "\n";
@@ -87,13 +87,13 @@ namespace CompiladorClaseWF
                 dgvNormalSimbolos.DataSource = NormalSimbolos;
             }
 
-            if (TablaMaestra.GetComponetsAsList(ComponentType.DUMMY).Count() > 0)
+            if (TablaMaestra.GetComponentsAsList(ComponentType.DUMMY).Count() > 0)
             {
                 cadena += "Dummies: \n";
                 DataTable DummiesSimbolos = crearTablaSimbolos();
 
 
-                foreach (LexicalComponent componentTmp in TablaMaestra.GetComponetsAsList(ComponentType.DUMMY))
+                foreach (LexicalComponent componentTmp in TablaMaestra.GetComponentsAsList(ComponentType.DUMMY))
                 {
                     cadena += "============================== \n";
                     cadena += componentTmp.ToString() + "\n";
@@ -103,12 +103,12 @@ namespace CompiladorClaseWF
                 dgvDummiesSimbolos.DataSource = DummiesSimbolos;
             }
 
-            if (TablaMaestra.GetComponetsAsList(ComponentType.PALABRA_RESERVADA).Count() > 0)
+            if (TablaMaestra.GetComponentsAsList(ComponentType.PALABRA_RESERVADA).Count() > 0)
             {
                 cadena += "Palabras reservadas:  \n";
                 DataTable PalabrasReservadasSimbolos = crearTablaSimbolos();
 
-                foreach (LexicalComponent componentTmp in TablaMaestra.GetComponetsAsList(ComponentType.PALABRA_RESERVADA))
+                foreach (LexicalComponent componentTmp in TablaMaestra.GetComponentsAsList(ComponentType.PALABRA_RESERVADA))
                 {
                     cadena += "============================== \n";
                     cadena += componentTmp.ToString() + "\n";

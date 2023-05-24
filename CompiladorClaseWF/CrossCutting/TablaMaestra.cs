@@ -9,15 +9,21 @@ namespace CompiladorClaseWF.CrossCutting
 {
     public class TablaMaestra
     {
-        private static Dictionary<ComponentType, TablaComponentes> TABLAS = new Dictionary<ComponentType, TablaComponentes>();
+        private static Dictionary<ComponentType, TablaComponentes> TABLAS =
+            new Dictionary<ComponentType, TablaComponentes>();
 
         static TablaMaestra()
         {
             TABLAS.Add(ComponentType.NORMAL, TablaSimbolos.GetTablaSimbolos());
             TABLAS.Add(ComponentType.DUMMY, TablaDummies.GetTablaDummies());
-            TABLAS.Add(ComponentType.LITERAL, TablaLiterales.GetTablaLiterales());
             TABLAS.Add(ComponentType.PALABRA_RESERVADA, TablaPalabrasReservadas.GetTablaPalabrasReservadas());
+            TABLAS.Add(ComponentType.LITERAL, TablaLiterales.GetTablaLiterales());
         }
+        private TablaMaestra()
+        {
+
+        }
+
         public static void Inicializar()
         {
             TablaSimbolos.GetTablaSimbolos().Initialize();
@@ -31,15 +37,18 @@ namespace CompiladorClaseWF.CrossCutting
             if (component != null)
             {
                 component = TablaPalabrasReservadas.ComprobarComponente(component);
+
                 TABLAS[component.Type].Add(component);
             }
         }
-        public static List<LexicalComponent> GetComponetsAsList(ComponentType type)
+
+        public static List<LexicalComponent> GetComponentsAsList(ComponentType type)
         {
             return TABLAS[type].GetComponentsAsList();
         }
 
-        public static Dictionary<string, List<LexicalComponent>> GetComponets(ComponentType type)
+        public static Dictionary<string, List<LexicalComponent>>
+            GetComponents(ComponentType type)
         {
             return TABLAS[type].GetComponents();
         }

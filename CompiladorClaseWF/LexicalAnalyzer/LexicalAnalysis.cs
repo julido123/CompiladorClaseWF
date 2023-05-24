@@ -568,6 +568,7 @@ namespace CompiladorClaseWF.LexicalAnalyzer
 
             CreateComponent(category, type);
         }
+
         private static void ProcessState27()
         {
             CreateComponentReturningIndex(Category.MAYOR_QUE, ComponentType.NORMAL);
